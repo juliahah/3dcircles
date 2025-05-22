@@ -48,14 +48,14 @@
 <body>
   <script>
     const ellipses = [];
-    const gap = 0; // px
+    const gap = 50; // px
     const spacingInterval = 500; //TIME of adding ellipses 
 
     function createEllipse() {
       const container = document.createElement('div');
       container.className = 'ellipse-container';
 
-      const randomHeight = Math.floor(Math.random() * (window.innerHeight * 0.8)) + 100;
+      const randomHeight = Math.floor(Math.pow(Math.random() ,2)* (window.innerHeight * 0.8)) + 100 ;
       const ellipseWidth = randomHeight * 0.2; //factor for the width 
 
       container.style.height = `${randomHeight}px`;
@@ -81,8 +81,9 @@
     function repositionEllipses() {
       let currentX = 0;
       for (const obj of ellipses) {
-        obj.element.style.transform = `translateX(${currentX}px) translateY(-50%)`;
-        currentX += obj.width + gap;
+        obj.element.style.transform = `translateX(${currentX-(obj.width/2)}px) translateY(-50%)`;
+        console.log(obj.width );
+        currentX += gap   ;
       }
     }
 
